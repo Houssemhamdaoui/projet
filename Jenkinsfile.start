@@ -1,0 +1,46 @@
+#!groovy
+
+properties ([
+        [$class: 'GitLabConnectionProperty', gitLabConnection: 'htw'],
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+])
+
+
+pipeline {
+    agent any
+    stages {
+        stage('Build'){
+            parallel {
+                stage('server_start'){
+                    steps {
+
+                            checkout scm
+                            dir("server/backend-wka/backend-wka"){
+                                sh "pwd"
+                                sh "chmod +x gradlew"
+                                sh './gradlew assemble'
+                                sh './gradlew run'
+                            }
+                        
+
+                    }
+                }
+                stage('client_start'){
+                    steps {
+
+                            checkout scm
+                            dir("client"){
+                                sh "pwd"
+                                sh 'npm install'
+                                sh 'ng serve --port 8035'
+                            }
+
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+// vim: ft=groovy

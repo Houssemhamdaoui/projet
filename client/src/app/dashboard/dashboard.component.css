@@ -1,0 +1,77 @@
+.color {
+    background-color: white;
+}
+
+.color_checkbox {
+    color: black;
+}
+
+.section {
+    display: table;
+}
+
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+.example-margin {
+    margin: 0 10px;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.example-button-row {
+    display: table-cell;
+    width: 490px;
+}
+
+.example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+::ng-deep .mat-datepicker-toggle {
+    color: black;
+}
+
+::ng-deep .mat-date-range-picker {
+    color: black;
+}
+
+::ng-deep .mat-datepicker {
+    color: black;
+}
+
+::ng-deep .matCheckbox {
+    color: black;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: black;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #ff7a00 !important;
+}

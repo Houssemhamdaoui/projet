@@ -1,0 +1,95 @@
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="color">
+
+                    <div class="card-body">
+                        <h4 class="card-title">Filter</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Bitte ein Zeitraum für die Inbetriebnahme auswählen</h6>
+                        <div class="example-button-row">
+                            <div class="example-flex-container">
+
+                                <button mat-raised-button (click)="toggle()" id="bt">
+                          {{buttonName}}
+                        </button>
+
+
+                                <ng-container *ngIf="show">
+                                    <div class="card">
+                                        <!--     <mat-checkbox class="example-margin" (change)="checkInstalled($event)">Inbetrieb</mat-checkbox> -->
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Enter a date range</mat-label>
+                                            <mat-date-range-input [formGroup]="range" [rangePicker]="picker1">
+                                                <input matStartDate formControlName="start" placeholder="Start date">
+                                                <input matEndDate formControlName="end" placeholder="End date">
+                                            </mat-date-range-input>
+                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                            <mat-date-range-picker #picker1></mat-date-range-picker>
+
+                                            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <!--  <div class="card">
+                                    <mat-checkbox class="example-margin" (change)="checkInstalled($event)">Inbetrieb</mat-checkbox>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Enter a date range</mat-label>
+                                        <mat-date-range-input [formGroup]="rangeInb" [rangePicker]="picker2">
+                                            <input matStartDate formControlName="start" placeholder="Start date">
+                                            <input matEndDate formControlName="end" placeholder="End date">
+                                        </mat-date-range-input>
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-date-range-picker #picker2></mat-date-range-picker>
+
+                                        <mat-error *ngIf="rangeInb.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                        <mat-error *ngIf="rangeInb.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                                    </mat-form-field>
+                                </div> -->
+                                    <button type="button" class="btn btn-default" id="search" (click)="clickEvent()">
+                                Start
+                              </button>
+                                </ng-container>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Leistung in Mega Watt</h5>
+                    <h4 class="card-title">Leistung in Abhängigkeit von Datum</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas baseChart id="lineChartExample" [datasets]="lineChartData" [labels]="lineChartLabels" [colors]="lineChartColors" [options]="lineChartOptions" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Top 10</h5>
+                    <h4 class="card-title">Leistung (MW) in Abhängigkeit von Postleitzahl</h4>
+                </div>
+                <div class="card-body">
+                    <canvas baseChart id="bigDashboardChart" [datasets]="barChartData" [labels]="barChartLabels" [colors]="lineBigDashboardChartColors" [options]="lineBigDashboardChartOptions" [chartType]="lineBigDashboardChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
